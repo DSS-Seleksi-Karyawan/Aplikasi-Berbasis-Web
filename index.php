@@ -5,15 +5,14 @@
     if (!isset($_SESSION['admin'])){    
         echo "<script language='javascript'> window.location.href='login.php'</script>";
     }else{
-        $users = new Users();
-    }
+        $pelamar = new Pelamar();
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>SPK Penerimaan Pegawai</title>
+        <title>SPK Seleksi Karyawan Baru</title>
 
         <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -25,7 +24,7 @@
             <div class="navbar-inner">
                 <div class="container">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                        <i class="icon-reorder shaded"></i></a><a class="brand" href="index.html">Penerimaan Pegawai (<?php echo $_SESSION['admin']; ?>) </a>
+                        <i class="icon-reorder shaded"></i></a><a class="brand" href="index.html">Seleksi Karyawan Baru (<?php echo $_SESSION['admin']; ?>) </a>
         </div>
         <!-- /navbar -->
         <div class="wrapper">
@@ -38,7 +37,11 @@
                                 </a></li>
                                 <?php
                                 ?>
-                                <li><a href="?menu=users"><i class="menu-icon icon-key"></i>Users </a></li>
+                                <li><a href="?menu=pelamar"><i class="menu-icon icon-envelope"></i>Data Pelamar </a>
+                                </li>
+                                <li><a href="?menu=kriteria"><i class="menu-icon icon-inbox"></i>Kriteria </a></li>
+                                <li><a href="?menu=perhitungan"><i class="menu-icon icon-group"></i>Perhitungan </a></li>
+                                <li><a href="logout.php"><i class="menu-icon icon-signout"></i>Logout </a></li>
                             </ul>
                             <!--/.widget-nav-->
                         </div>
@@ -55,7 +58,7 @@
         <!--/.wrapper-->
         <div class="footer">
             <div class="container">
-                <b class="copyright">&copy; 2017 </b>Arfiyanto Bismantoro 
+                <b class="copyright">&copy; 2017 </b>All rights reserved.
             </div>
         </div>
         <script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
@@ -70,4 +73,5 @@
     </body>
 </html>
 <?php 
+}
 ?>
