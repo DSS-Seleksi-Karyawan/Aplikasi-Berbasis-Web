@@ -10,6 +10,10 @@
 			include "menu/kriteria.php";
 		}
 
+		if($menu == "perhitungan"){
+			include "menu/perhitungan.php";
+		}
+
 	}else{
 		include "menu/home.php";
 	}

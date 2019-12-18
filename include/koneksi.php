@@ -94,15 +94,6 @@
 	}
 
 	class Kriteria extends DB{
-		private $sqlInsert;
-		private $sqlEdit;
-		private $sqlHapus;
-
-		function __construct(){
-			$this->sqlInsert = $this->bukaKoneksi()->prepare("insert into kriteria values (:id_kriteria, :nama_kriteria, :bobot)");
-			$this->sqlEdit = $this->bukaKoneksi()->prepare("update kriteria set nama_kriteria=:nama_kriteria, bobot=:bobot where id_kriteria=:id_kriteria");
-			$this->sqlHapus = $this->bukaKoneksi()->prepare("delete from kriteria where id_kriteria=:id_kriteria");
-		}
 
 		function GetData($qry_custom){
 			try{
@@ -113,36 +104,15 @@
 				print $e->getMessage();
 			}
 		}
+	}
 
-		function InsertData($id_kriteria, $nama_kriteria, $bobot){
-			try{
-				$this->sqlInsert->bindParam(':id_kriteria', $id_kriteria);
-				$this->sqlInsert->bindParam(':nama_kriteria', $nama_kriteria);
-				$this->sqlInsert->bindParam(':bobot', $bobot);
-				$this->sqlInsert->execute();
-				return $this->sqlInsert;
-			}catch (PDOException $e){
-				print $e->getMessage();
-			}
-		}
+	class Penilaian extends DB{
 
-		function EditData($nama_kriteria, $bobot, $id_kriteria){
+		function GetData($qry_custom){
 			try{
-				$this->sqlEdit->bindParam(':nama_kriteria', $nama_kriteria);
-				$this->sqlEdit->bindParam(':bobot', $bobot);
-				$this->sqlEdit->bindParam(':id_kriteria', $id_kriteria);
-				$this->sqlEdit->execute();
-				return $this->sqlEdit;
-			}catch (PDOException $e){
-				print $e->getMessage();
-			}
-		}
-
-		function HapusData($id_kriteria){
-			try{
-				$this->sqlHapus->bindParam(':id_kriteria', $id_kriteria);
-				$this->sqlHapus->execute();
-				return $this->sqlHapus;
+				$sql = $this->bukaKoneksi()->prepare("select * from penilaian " . $qry_custom);
+				$sql->execute();
+				return $sql;
 			}catch (PDOException $e){
 				print $e->getMessage();
 			}
